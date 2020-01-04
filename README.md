@@ -1,19 +1,19 @@
-# Pixel Art Filter
+# PNG Pixel Art Filter
 Pixel Art Filter is an image filter that pixelates PNG images using a lossy image compression algorithm, written in C++ using clang and LodePNG.
-
-![functionality1](https://user-images.githubusercontent.com/31530273/51096227-d989b480-176f-11e9-8c3b-be3d59a36daf.PNG)
-
-![functionality2](https://user-images.githubusercontent.com/31530273/51096249-fe7e2780-176f-11e9-9caa-0967a5edcf48.PNG)
+* lena.png [474756]  
+![origin](images/lena.png)
+* lena.paf100.png [256651] (`./pngpaf images/lena.png images/lena.paf100.png`)  
+![paf 100](images/lena.paf100.png)
+* lena.paf200.png [176850] (`./pngpaf images/lena.png images/lena.paf200.png 200`)  
+![paf 100](images/lena.paf200.png)
+* lena.paf500.png [105063] (`./pngpaf images/lena.png images/lena.paf500.png 500`)  
+![paf 100](images/lena.paf500.png)
 
 ## Prerequisites
 To run this project, after cloning it:
 ### Add LodePNG
-LodePNG is used to encode and deocde PNG images:
-* Add lodepng.cpp and lodepng.h files from https://lodev.org/lodepng/ to the util/lodepng/ folder
-### Clang
-Clang is used to compile the project:
-* Installing clang on a local machine is different depending on the OS
-* A tutorial can be found online
+LodePNG library is used to encode and deocde PNG images:
+* Compile and install library from https://github.com/zvezdochiot/lodepng
 
 ## Deployment
 To compile the project, use the command:
@@ -22,33 +22,11 @@ make
 ```
 And once that is finished, run the project using:
 ```
-./paf
+./pngpaf input.png filter.png [tol=100] [pct=1.000000]
 ```
-Once this is completed the output will be in the images/ folder.
-
 You can also remove the compiler output files by running the command:
 ```
 make clean
 ```
 
-##Create different effects
-To add your own images, add PNG files to the images/ folder.
-
-Go to main.cpp and modify the parameters:
-```C++
-origImg1.readFromFile("images/starry-night.png");
-origImg2.readFromFile("images/mona-lisa.png");
-origImg3.readFromFile("images/hokusai.png");
-```
-To play with the pixelation effect, modify the parameters:
-```C++
-t1.prune(0.99, 8500);
-t2.prune(0.99, 8500);
-t3.prune(0.95, 8500);
-```
-Finally, to change the output image names, modify the parameters:
-```C++
-pic1.writeToFile("images/output-starry-night.png");
-pic2.writeToFile("images/output-mona-lisa.png");
-pic3.writeToFile("images/output-hokusai.png");
-```
+2020
